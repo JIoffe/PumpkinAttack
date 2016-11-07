@@ -221,7 +221,9 @@
      <Compile Include="Assets\Scripts\Managers\MonsterSpawnManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlayerWarningManager.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\CollisionSound.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ObjectCannon.cs" />
+     <Compile Include="Assets\Scripts\Structs\AudioClipSettings.cs" />
      <Compile Include="Assets\Scripts\Structs\DamageInfo.cs" />
      <Compile Include="Assets\Scripts\UI\AirTapListener.cs" />
      <Compile Include="Assets\Scripts\UI\UIManager.cs" />

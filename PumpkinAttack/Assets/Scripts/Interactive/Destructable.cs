@@ -17,6 +17,9 @@ namespace JI.Holographic.PumpkinAttack.Interactive
         [Tooltip("The maximum number of damage points required to destroy this object")]
         public int maximumDamagePoints = 3;
 
+        [Tooltip("Settings for the sound effect(s) to play when this object is destroyed")]
+        public AudioClipSettings destructionSoundSettings;
+
         private int damagePoints = 0;
         private Rigidbody rigidBody;
         void Start()
@@ -27,14 +30,6 @@ namespace JI.Holographic.PumpkinAttack.Interactive
 
             damagePoints = Random.Range(minimumDamagePoints, maximumDamagePoints + 1);
         }
-        //void OnCollisionEnter(Collision collision)
-        //{
-        //    if (!collision.collider.tag.Equals(destroyerTag))
-        //        return;
-
-        //    BroadcastMessage("OnDamage", SendMessageOptions.DontRequireReceiver);
-
-        //}
 
         public void OnDamage(DamageInfo damageInfo)
         {
@@ -51,6 +46,10 @@ namespace JI.Holographic.PumpkinAttack.Interactive
         }
         public void OnDestruction()
         {
+            //Todo - Incorporate the sound modulation settings without impacting frame rate too much
+            if (destructionSoundSettings.HasAudioClip)
+                AudioSource.PlayClipAtPoint(destructionSoundSettings.Clip, transform.position);
+
             Destroy(gameObject);
         }
 

@@ -9,11 +9,22 @@ namespace JI.Holographic.PumpkinAttack.Effects
     /// </summary>
     public class OneShotParticle : MonoBehaviour
     {
+        [Tooltip("The sound effect(s) to use for this effect, if any")]
+        public AudioClipSettings effectSoundSettings;
+
         void Start()
         {
             var particleSystem = GetComponent<ParticleSystem>();
             particleSystem.Play();
             Destroy(gameObject, particleSystem.duration);
+
+            PlaySoundEffect();
+        }
+
+        private void PlaySoundEffect()
+        {
+            AudioSource audioSource = GetComponent<AudioSource>();
+            effectSoundSettings.Play(audioSource);
         }
     }
 }

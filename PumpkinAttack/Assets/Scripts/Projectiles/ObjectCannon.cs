@@ -13,11 +13,27 @@ namespace JI.Holographic.PumpkinAttack.Projectiles
         [Tooltip("Prefab to use for the projectiles launched by this cannon")]
         public GameObject projectilePrefab;
 
+        [Tooltip("Settings for sound to use when firing from this cannon")]
+        public AudioClipSettings fireSoundSettings;
+
+        private AudioSource audioSource;
+
+        void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
         public void Launch()
         {
             var projectile = Instantiate(projectilePrefab);
             projectile.transform.forward = transform.forward;
             projectile.transform.position = transform.position;
+
+            PlayFireSound();
+        }
+
+        private void PlayFireSound()
+        {
+            fireSoundSettings.Play(audioSource);
         }
     }
 }

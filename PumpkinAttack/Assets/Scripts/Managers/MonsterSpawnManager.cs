@@ -74,7 +74,7 @@ namespace JI.Holographic.PumpkinAttack.Managers
             var direction = GetNewSpawnDirection();
 
             RaycastHit hitInfo;
-            if (Physics.Raycast(origin, direction, out hitInfo, spawnSettings.maxSpawnDistance, ~(1 << 31)))
+            if(Physics.SphereCast(origin, 0.5f, direction, out hitInfo, spawnSettings.maxSpawnDistance, ~(1 << 31)))
             {
                 return hitInfo.point;
             }
